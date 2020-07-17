@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<p th:text="'Hello, ' + ${name} + '!'" />
+<div>
+    <form method="post" action="add">
+        create:
+        <input type="text" name="firstName" placeholder="Введите имя" />
+        <input type="text" name="lastName" placeholder="Введите фамилию">
+        <button type="submit">Добавить</button>
+    </form>
+</div>
+<br>
+<div>
+    <form method="post" action="delete">
+        delete:
+        <input type="text" name="id" placeholder="Введите id" />
+        <button type="submit">Удалить</button>
+    </form>
+</div>
+<br>
+<div>
+    <form method="post" action="update">
+        update:
+        <input type="text" name="id" placeholder="Введите id" />
+        <input type="text" name="firstName" placeholder="Введите новое имя" />
+        <input type="text" name="lastName" placeholder="Введите новую фамилию">
+        <button type="submit">Обновить</button>
+    </form>
+</div>
+<br>
+<div>
+    read:
+    <form th:action="@{/findAll}">
+        <table>
+            <tr>
+                <th>id</th>
+                <th>Имя</th>
+                <th>Фамилия</th>
+            </tr>
+            <tr th:each="student: ${users}">
+                <td th:text="${student.id}"></td>
+                <td th:text="${student.firstName}"></td>
+                <td th:text="${student.lastName}"></td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>
